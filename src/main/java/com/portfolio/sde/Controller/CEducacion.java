@@ -58,10 +58,7 @@ public class CEducacion {
         if(StringUtils.isAllBlank(dtoEducacion.getNombreE())) {
             return new ResponseEntity(new Mensaje("El Nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if(sEducacion.existsByNombre(dtoEducacion.getNombreE())){
-            return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        }
-        
+
         Educacion educacion = new Educacion(dtoEducacion.getNombreE(), dtoEducacion.getDescripcionE());
         sEducacion.save(educacion);
         return new ResponseEntity(new Mensaje("Educacion Creada"), HttpStatus.OK);
